@@ -6,6 +6,8 @@
   font-family: Inter, system-ui, sans-serif;
   color: #e5e7eb;
   background: #111827;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
 }
 
 body {

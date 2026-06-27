@@ -1,11 +1,11 @@
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
+import axios from 'axios'
+
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL ?? 'http://localhost:8000',
+  headers: { 'Content-Type': 'application/json' },
+})
 
 export async function getHealth() {
-  const response = await fetch(`${API_URL}/health`)
-
-  if (!response.ok) {
-    throw new Error('Unable to reach the D-CUBE API.')
-  }
-
-  return response.json() as Promise<{ status: string; service: string }>
+  const { data } = await api.get<{ status: string }>('/health')
+  return data
 }
